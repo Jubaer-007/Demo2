@@ -30,6 +30,8 @@
   <!-- Template Main CSS File -->
   <link href="{{url('/assets/css/style.css')}}" rel="stylesheet">
 
+  <!-- toastr -->
+  <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Sep 18 2023 with Bootstrap v5.3.2
@@ -94,6 +96,11 @@
   <!-- Template Main JS File -->
   <script src="{{url('/assets/js/main.js')}}"></script>
 
+
+  <!-- toastr  -->
+  <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
 </body>
 
 </html>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('itemName');
             $table->string('status')->default('active');
             $table->text('itemDescription');
-            $table->string('price');
+            $table->integer('price');
             $table->string('image')->nullable();
             $table->timestamps();
         });

@@ -11,7 +11,7 @@
   <div class="container">
         <div class="row mt-3">
           <div class="col-md-6 offset-md-3">
-          <a class="btn btn-primary px-5" href="#">Home</a>
+          <a class="btn btn-primary px-5" href="{{route('web.home')}}">Home</a>
           </div>
             <div class="col-md-6 offset-md-3">
                <div class="card mt-5 p-3">

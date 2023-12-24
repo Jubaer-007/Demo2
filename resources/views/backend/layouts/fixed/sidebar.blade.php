@@ -29,12 +29,14 @@
       <li class="nav-item">
         <a class="nav-link collapsed"href="{{route('menu.index')}}">
           <i class="bi bi-menu-button-wide"></i><span>Menus</span>
-        </a>
-  
-            
-      </li><!-- End Components Nav -->
+        </a>   
+      </li>
 
-      
+      <li class="nav-item">
+        <a class="nav-link collapsed"href="{{route('menuItem.index')}}">
+          <i class="bi bi-menu-button-wide"></i><span>MenuItems</span>
+        </a>   
+      </li>
 
     
 

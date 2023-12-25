@@ -16,7 +16,10 @@ use App\Http\Controllers\MenuController;
 
 
 Route::get('/',[WebHomeController::class,'index'])->name('web.home');
-Route::resource('web',WebController::class);
+Route::get('/menu',[WebHomeController::class,'menu'])->name('home.menu');
+Route::get('/menuItem',[WebHomeController::class,'menuItem'])->name('home.menuItem');
+
+// Route::resource('web',WebController::class);
 
 Route::group(['prefix'=> 'admin'], function () {
 

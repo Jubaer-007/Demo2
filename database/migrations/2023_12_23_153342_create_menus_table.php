@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('menuName');
             $table->string('description');
             $table->string('status')->default('active');
+            $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });

@@ -31,6 +31,17 @@
                                     </span>
                                      @enderror
                             </div>
+
+                            <div class="mb-3">
+                                <label for="">Image:</label>
+                                   <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" value="{{$menu->image}}">
+
+                                     @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                     @enderror
+                            </div>
                             <div>
                                 <label for="">Select User</label>
                                 <select name="user_id" id="" class="form-control">

@@ -28,7 +28,7 @@
                             <td>{{$menu->menuName}}</td>
                             <td>{{$menu->description}}</td>
                             <td class="text-success ">{{$menu->status}}</td>
-                            <td>
+                            <td class="d-flex ">
                                 <a href="{{route('menu.show',$menu->id)}}" class="btn btn-primary">View</a>
                                 <a href="{{route('menu.edit',$menu->id)}}" class="btn btn-info">Edit</a>
                                 <form action="{{route('menu.destroy',$menu->id)}}" method="post">

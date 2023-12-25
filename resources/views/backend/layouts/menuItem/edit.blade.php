@@ -56,7 +56,7 @@
 
                             <div class="mb-3">
                                 <label for="">Description:</label>
-                                   <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" placeholder="Description" value="{{$menuItem->itemDescripiton}}">
+                                   <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" placeholder="Description" value="{{$menuItem->itemDescription}}">
 
                                      @error('description')
                                     <span class="invalid-feedback" role="alert">

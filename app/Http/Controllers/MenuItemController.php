@@ -84,7 +84,7 @@ class menuItemController extends Controller
         
     }
     public function destroy($id){
-        menuItem::destroy($id);
+        MenuItem::destroy($id);
         Toastr::error('successfully deleted', 'menuItem');
         return redirect()->back();
 }

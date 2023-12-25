@@ -7,7 +7,7 @@
             <div class="card">
                 <h1 class="card-header mb-3"><strong> Create MenuItem </strong></h1>
                     <div class="card-body">
-                        <form action="{{route('menuItem.store')}}" method="post" >
+                        <form action="{{route('menuItem.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="">MenuItem Name:</label>
@@ -23,11 +23,17 @@
                             
                             <div>
                                 <label for="">Select Menu</label>
-                                <select name="menu_id" id="" class="form-control">
+                                <select name="menu_id" id="" class="form-control @error('menu_id') is-invalid @enderror">
                                     @foreach($menus as $id=>$menu)
                                     <option value="{{$menu->id}}">{{$menu->menuName}}</option>
                                     @endforeach
+
                                 </select>
+                                @error('menu_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                     @enderror
                             </div>
                             
                             <div class="mb-3">

@@ -36,7 +36,7 @@ Route::group(['prefix'=> 'admin'], function () {
 
         Route::resource('category',CategoryController::class);
         Route::resource('menu',MenuController::class);
-        Route::resource('menuItem',MenuItemController::class);
+        
         Route::resource('order',OrderController::class);
         Route::resource('orderItem',OrderItemController::class);
         Route::resource('report',ReportController::class);

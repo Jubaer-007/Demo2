@@ -23,12 +23,22 @@ class MenuController extends Controller
             'menuName'=>'required',
             'description'=>'required',
             'user_id'   =>'required',
+            'image'   =>'required',
             
         ]);
+
+        $fileName=null;
+        if($request->hasFile('image'))
+        {
+            $image=$request->file('image');
+            $fileName= date('ymdhi'.'.'.$image->getClientOriginalExtension());
+            $image->move(public_path('uploads/menus'),$fileName);
+        }
         Menu::create([
             'menuName'=>$request->menuName,
             'description'=>$request->description,
-            'user_id'   =>$request->user_id
+            'user_id'   =>$request->user_id,
+            'image'   =>$fileName
         ]);
         Toastr::success('successfully created', 'menu');
         return redirect()->route('menu.index');
@@ -48,13 +58,22 @@ class MenuController extends Controller
             'menuName'=>'required',
             'description'=>'required',
             'user_id'   =>'required',
+            'image'   =>'required',
             
         ]);
+        $fileName=$request->image;
+        if($request->hasFile('image'))
+        {
+            $image=$request->file('image');
+            $fileName= date('ymdhi'.'.'.$image->getClientOriginalExtension());
+            $image->move(public_path('uploads/menuItems'),$fileName);
+        }
         $menu=Menu::find($id);
         $menu->update([
             'menuName'=>$request->menuName,
             'description'=>$request->description,
-            'user_id'   =>$request->user_id
+            'user_id'   =>$request->user_id,
+            'image'   =>$fileName
         ]);
         Toastr::success('successfully updated', 'menu');
         return redirect()->route('menu.index');

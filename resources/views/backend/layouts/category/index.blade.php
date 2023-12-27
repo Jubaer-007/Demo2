@@ -7,8 +7,8 @@
         <div class="col-md-12">
             <div class="card">
             <div class="card-header py-3 d-flex justify-content-between">
-                <h3 class="m-0 font-weight-bold text-primary">menus List</h3>
-                <a class="btn btn-primary py-2" href="{{ route('menu.create') }}">+Add New</a>
+                <h3 class="m-0 font-weight-bold text-primary">Categorys List</h3>
+                <a class="btn btn-primary py-2" href="{{ route('category.create') }}">+Add New</a>
             </div>
                 <div class="card-body">
                 <table class="table table-striped table-hover">
@@ -16,25 +16,27 @@
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Description</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                      @foreach($menus as $key=>$menu)
+                        @php
+                            $id=0;
+                        @endphp
+                      @foreach($categories as $category)
                         <tr>
-                            <td>{{++$key}}</td>
-                            <td>{{$menu->menuName}}</td>
-                            <td>{{$menu->description}}</td>
-                            <td class="text-success ">{{$menu->status}}</td>
+                            <td>{{++$id}}</td>
+                            <td>{{$category->name}}</td>
+                            <td>{{$category->status == 1 ? "Active" :"Inactive"}}</td>
+                            
                             <td class="d-flex ">
-                                <a href="{{route('menu.show',$menu->id)}}" class="btn btn-primary">View</a>
-                                <a href="{{route('menu.edit',$menu->id)}}" class="btn btn-info">Edit</a>
-                                <form action="{{route('menu.destroy',$menu->id)}}" method="post">
+                                <a href="{{route('category.show',$category->id)}}" class="btn btn-primary me-1"> <i class="fa fa-eye"></i></a>
+                                <a href="{{route('category.edit',$category->id)}}" class="btn btn-info me-1"><i class="fa-solid fa-pencil"></i></a>
+                                <form action="{{route('category.destroy',$category->id)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class='btn btn-danger'>Delete</button>
+                                    <button type="submit" class='btn btn-danger me-1'><i class="fa-solid fa-delete-left"></i></button>
                                 </form>
                                 
                             </td>

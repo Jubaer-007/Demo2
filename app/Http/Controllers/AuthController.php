@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
+use App\Models\MenuItem;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +37,8 @@ class AuthController extends Controller
 public function dashboard()
 {
     $total_menu = Menu::count();
-    return view("backend.dashboard",compact('total_menu'));
+    $total_menuItem = MenuItem::count();
+    return view("backend.dashboard",compact('total_menu','total_menuItem'));
 }
 public function logout()
 {

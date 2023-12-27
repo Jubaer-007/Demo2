@@ -8,6 +8,7 @@
                 <h1 class="card-header text-center mb-3"><strong>menu Details</strong></h1>
                 <div class="card-body">
                     
+                    <h5><span>Name: </span><img width="100" height="100" src="{{url('uploads/menus/',$menu->image)}}" alt="image"></h5>
                     <h5><span>Name: </span>{{$menu->menuName}}</h5>
                     <h5><span>Location: </span>{{$menu->description}}</h5>
                     <h5><span>Status: </span>{{$menu->status}}</h5>

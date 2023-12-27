@@ -23,7 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-       View::share('menus', Menu::all());
-       View::share('menuItems', MenuItem::all());
+       
     }
 }

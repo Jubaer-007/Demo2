@@ -39,11 +39,35 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed"href="{{route('menuItem.index')}}">
-          <i class="bi bi-menu-button-wide"></i><span>MenuItems</span>
+        <a class="nav-link collapsed"href="">
+          <i class="bi bi-menu-button-wide"></i><span>Combo</span>
         </a>   
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link collapsed"href="">
+          <i class="bi bi-menu-button-wide"></i><span>Event</span>
+        </a>   
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed"href="">
+          <i class="bi bi-menu-button-wide"></i><span>Member</span>
+        </a>   
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed"href="">
+          <i class="bi bi-menu-button-wide"></i><span>Team</span>
+        </a>   
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed"href="">
+          <i class="bi bi-menu-button-wide"></i><span>Order</span>
+        </a>   
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed"href="">
+          <i class="bi bi-menu-button-wide"></i><span>Report</span>
+        </a>   
+      </li>
     
 
      <!-- End Blank Page Nav -->

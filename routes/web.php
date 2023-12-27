@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
@@ -33,6 +34,7 @@ Route::group(['prefix'=> 'admin'], function () {
         Route::get('dashboard',[AuthController::class,'dashboard'])->name('dashboard');
         Route::get('logout',[AuthController::class,'logout'])->name('logout');
 
+        Route::resource('category',CategoryController::class);
         Route::resource('menu',MenuController::class);
         Route::resource('menuItem',MenuItemController::class);
         Route::resource('order',OrderController::class);

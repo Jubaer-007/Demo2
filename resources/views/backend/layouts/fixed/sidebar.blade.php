@@ -27,6 +27,12 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed"href="{{route('category.index')}}">
+          <i class="bi bi-menu-button-wide"></i><span>Category</span>
+        </a>   
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link collapsed"href="{{route('menu.index')}}">
           <i class="bi bi-menu-button-wide"></i><span>Menus</span>
         </a>   

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Menu;
 use App\Models\MenuItem;
 use Brian2694\Toastr\Facades\Toastr;
@@ -37,8 +38,9 @@ class AuthController extends Controller
 public function dashboard()
 {
     $total_menu = Menu::count();
-    $total_menuItem = MenuItem::count();
-    return view("backend.dashboard",compact('total_menu','total_menuItem'));
+    $total_category = Category::count();
+    $total_combo = Combo::count();
+    return view("backend.dashboard",compact('total_menu','total_category'.'total_combo'));
 }
 public function logout()
 {

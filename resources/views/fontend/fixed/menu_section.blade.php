@@ -13,20 +13,7 @@
    
        <div class="row">
         
-        @foreach ($menus as $menu)
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-              <img height="300" src="{{url('uploads/menus/',$menu->image)}}" class="card-img-top" alt="image">
-              <div class="card-body">
-                <h5 class="card-title">{{$menu->menuName}}</h5>
-                <p class="card-text">{{$menu->description}}</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item badge">{{$menu->status}}</li>
-              </ul>
-            </div>
-            </div>
-        @endforeach
+      
        </div>
     </section><!-- End Menu Section -->
 @endsection

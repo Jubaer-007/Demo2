@@ -5,13 +5,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <h1 class="card-header mb-3"><strong> Create Menu </strong></h1>
+                <h1 class="card-header mb-3"><strong> Create Team </strong></h1>
                     <div class="card-body">
                         <form action="{{route('team.store')}}" method="post" >
                             @csrf
                             <div class="mb-3">
-                                <label for="">Menu Name:</label>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Menu Name" value="{{old('name')}}">
+                                <label for="">Team Name:</label>
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Team Name" value="{{old('name')}}">
   
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">

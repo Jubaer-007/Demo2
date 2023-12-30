@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Combo;
+use App\Models\Member;
 use App\Models\Menu;
 use App\Models\MenuItem;
+use App\Models\Team;
 use Brian2694\Toastr\Facades\Toastr;
+use Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,7 +44,11 @@ public function dashboard()
     $total_menu = Menu::count();
     $total_category = Category::count();
     $total_combo = Combo::count();
-    return view("backend.dashboard",compact('total_menu','total_category','total_combo'));
+    $total_member = Member::count();
+    $total_team = Team::count();
+    // $total_event = Event::count();
+  
+    return view("backend.dashboard",compact('total_menu','total_category','total_combo','total_team','total_member'));
 }
 public function logout()
 {

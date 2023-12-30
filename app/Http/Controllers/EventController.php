@@ -29,6 +29,7 @@ class EventController extends Controller
         // ]);
 
         
+        
         Event::create([
             'what'          =>$request->name,
             'where'         =>$request->where,

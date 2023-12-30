@@ -3,63 +3,82 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    public function index(){
+        $events=Event::all();
+        return view('backend.layouts.event.index', compact('events'));
+    }
+    public function create(){
+
+        return view('backend.layouts.event.create');
+    }
+    public function store(Request $request){
+        dd($request->all());
+        // $request->validate([
+        //     'name'          =>'required',
+        //     'price'          =>'required|numeric|min:0',
+        //     'description'   =>'required|string|min:10',
+        //     'category_id'   =>'required|numeric|min:0',
+        //     'status'        =>'required|numeric:min:0',
+        //     'image'         =>'required:image|mimes:jpeg,jpg,svg|maz:1048',
+            
+        // ]);
+
+        
+        Event::create([
+            'what'          =>$request->name,
+            'where'         =>$request->where,
+            'date'          =>$request->date,
+            'time'          =>$request->time,
+            'status'        =>$request->status,
+          
+        ]);
+        Toastr::success('successfully created', 'event');
+        return redirect()->route('event.index');
+    }
+    public function show($id){
+        $event=event::find($id);
+        
+        return view('backend.layouts.event.show',compact('event'));
+    }
+    public function edit($id){
+        $event=event::find($id);
+        return view('backend.layouts.event.edit',compact('event'));
+    }
+    public function update(Request $request, $id){
+        // dd($request->all());
+        /* $request->validate([
+            'name'          =>'required',
+            'price'          =>'required|numeric|min:0',
+            'description'   =>'required|string|min:10',
+            'category_id'   =>'required|numeric|min:0',
+            'status'        =>'required|numeric:min:0',
+            'image'         =>'required:image|mimes:jpeg,jpg,svg|maz:1048',
+            
+        ]); */
+       
+        $event=event::find($id);
+        $event->update([
+            'what'          =>$request->name,
+            'where'         =>$request->where,
+            'date'          =>$request->date,
+            'time'          =>$request->time,
+            'status'        =>$request->status,
+          
+        ]);
+        Toastr::success('successfully updated', 'event');
+        return redirect()->route('event.index');
+        
+    }
+    public function destroy($id){
+        Event::destroy($id);
+        Toastr::error('successfully deleted', 'event');
+        return redirect()->back();
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Event $event)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Event $event)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Event $event)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Event $event)
-    {
-        //
-    }
 }

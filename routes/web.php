@@ -4,6 +4,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComboController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
@@ -38,6 +39,7 @@ Route::group(['prefix'=> 'admin'], function () {
         Route::resource('category',CategoryController::class);
         Route::resource('menu',MenuController::class);
         Route::resource('combo',ComboController::class);
+        Route::resource('event',EventController::class);
         
         Route::resource('order',OrderController::class);
         Route::resource('orderItem',OrderItemController::class);

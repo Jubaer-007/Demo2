@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('where');
             $table->date('date');
             $table->timestamp('time');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ class EventController extends Controller
         return view('backend.layouts.event.create');
     }
     public function store(Request $request){
-        dd($request->all());
+        // dd($request->all());
         // $request->validate([
         //     'name'          =>'required',
         //     'price'          =>'required|numeric|min:0',
@@ -29,7 +29,7 @@ class EventController extends Controller
         // ]);
 
         
-        
+
         Event::create([
             'what'          =>$request->name,
             'where'         =>$request->where,
@@ -47,7 +47,7 @@ class EventController extends Controller
         return view('backend.layouts.event.show',compact('event'));
     }
     public function edit($id){
-        $event=event::find($id);
+        $event=Event::find($id);
         return view('backend.layouts.event.edit',compact('event'));
     }
     public function update(Request $request, $id){
@@ -62,7 +62,7 @@ class EventController extends Controller
             
         ]); */
        
-        $event=event::find($id);
+        $event=Event::find($id);
         $event->update([
             'what'          =>$request->name,
             'where'         =>$request->where,
@@ -71,13 +71,13 @@ class EventController extends Controller
             'status'        =>$request->status,
           
         ]);
-        Toastr::success('successfully updated', 'event');
+        Toastr::success('successfully updated', 'Event');
         return redirect()->route('event.index');
         
     }
     public function destroy($id){
         Event::destroy($id);
-        Toastr::error('successfully deleted', 'event');
+        Toastr::error('successfully deleted', 'Event');
         return redirect()->back();
         
     }

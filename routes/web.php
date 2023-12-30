@@ -5,10 +5,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComboController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\WebHomeController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +43,8 @@ Route::group(['prefix'=> 'admin'], function () {
         Route::resource('menu',MenuController::class);
         Route::resource('combo',ComboController::class);
         Route::resource('event',EventController::class);
+        Route::resource('member',MemberController::class);
+        Route::resource('team',TeamController::class);
         
         Route::resource('order',OrderController::class);
         Route::resource('orderItem',OrderItemController::class);

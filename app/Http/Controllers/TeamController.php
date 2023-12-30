@@ -2,64 +2,78 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use App\Models\Team;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    public function index(){
+        $teams=Team::with('member')->get();
+        return view('backend.layouts.team.index', compact('teams'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function create(){
+        $members= Member::where('status',1)->get();
+        return view('backend.layouts.team.create',compact('members'));
     }
+    public function store(Request $request){
+        // dd($request->all());
+        // $request->validate([
+        //     'name'          =>'required',
+        //     'price'          =>'required|numeric|min:0',
+        //     'description'   =>'required|string|min:10',
+        //     'category_id'   =>'required|numeric|min:0',
+        //     'status'        =>'required|numeric:min:0',
+        //     'image'         =>'required:image|mimes:jpeg,jpg,svg|maz:1048',
+            
+        // ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        Team::create([
+            'name'          =>$request->name,
+            'member_id'   =>$request->member_id,
+            'status'        =>$request->status,
+            
+        ]);
+        Toastr::success('successfully created', 'Team');
+        return redirect()->route('team.index');
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Team $team)
-    {
-        //
+    public function show($id){
+        $team=Team::find($id);
+        
+        return view('backend.layouts.team.show',compact('team'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Team $team)
-    {
-        //
+    public function edit($id){
+        $team=team::find($id);
+        $members= Member::where('status',1)->get();
+        return view('backend.layouts.team.edit',compact('team','members'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Team $team)
-    {
-        //
+    public function update(Request $request, $id){
+        // dd($request->all());
+        /* $request->validate([
+            'name'          =>'required',
+            'price'          =>'required|numeric|min:0',
+            'description'   =>'required|string|min:10',
+            'category_id'   =>'required|numeric|min:0',
+            'status'        =>'required|numeric:min:0',
+            'image'         =>'required:image|mimes:jpeg,jpg,svg|maz:1048',
+            
+        ]); */
+       
+        $team=Team::find($id);
+        $team->update([
+            'name'          =>$request->name,
+            'member_id'     =>$request->member_id,
+            'status'        =>$request->status,
+        ]);
+        Toastr::success('successfully updated', 'Team');
+        return redirect()->route('team.index');
+        
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Team $team)
-    {
-        //
+    public function destroy($id){
+        Team::destroy($id);
+        Toastr::error('successfully deleted', 'Team');
+        return redirect()->back();
+        
     }
 }

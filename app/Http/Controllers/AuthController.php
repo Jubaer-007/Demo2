@@ -23,12 +23,12 @@ class AuthController extends Controller
     $credentials=$request->except(['_token']);
     if(auth()->attempt($credentials))
     {
-        toastr()->success('wow !! successfully login.');
+       toastr()->success('wow !! successfully login.');
         return redirect()->route('dashboard');
     }
     else
     {
-        Toastr::error('Invalid user informations');
+       Toastr::error('Invalid user informations');
         return redirect()->back();
     }
     

@@ -25,7 +25,8 @@ Route::group(['prefix'=> 'admin'], function () {
     Route::get('loginForm',[AuthController::class,'loginForm'])->name('login.form');
     Route::post('login',[AuthController::class,'login'])->name('login');
     
-    Route::group(['middleware'=> ['auth']], function () {
+    Route::group(['middleware'=> ['auth']], function () 
+    {
         
         Route::get('dashboard',[AuthController::class,'dashboard'])->name('dashboard');
         Route::get('logout',[AuthController::class,'logout'])->name('logout');

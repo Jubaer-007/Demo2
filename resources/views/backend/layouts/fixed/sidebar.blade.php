@@ -49,12 +49,12 @@
         </a>   
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed"href="">
+        <a class="nav-link collapsed"href="{{route('member.index')}}">
           <i class="bi bi-menu-button-wide"></i><span>Member</span>
         </a>   
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed"href="">
+        <a class="nav-link collapsed"href="{{route('team.index')}}">
           <i class="bi bi-menu-button-wide"></i><span>Team</span>
         </a>   
       </li>

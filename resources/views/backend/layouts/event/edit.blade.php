@@ -7,12 +7,12 @@
             <div class="card">
                 <h1 class="card-header mb-3"><strong> Edit event </strong></h1>
                     <div class="card-body">
-                        <form action="{{route('event.update',$event=>id)}}" method="post" >
+                        <form action="{{route('event.update',$event->id)}}" method="post" >
                             @csrf
                             @method('put')
                             <div class="mb-3">
                                 <label for="">What:</label>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="event Name" value="{{$event->name}}">
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="event Name" value="{{ $event->what }}">
   
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -60,8 +60,8 @@
                             <div class="mb-3">
                                 <label for="">Status</label>
                                 <select name="status" id="" class="form-control">
-                                   <option value="1" {{$combo->status ==1 ? 'selected' : '' }}>Active</option>
-                                   <option value="0" {{$combo->status ==0 ? 'selected' : '' }}>Inactive</option>
+                                   <option value="1" {{$event->status ==1 ? 'selected' : '' }}>Active</option>
+                                   <option value="0" {{$event->status ==0 ? 'selected' : '' }}>Inactive</option>
                                 </select>
                             </div>
 

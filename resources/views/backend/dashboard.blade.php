@@ -108,7 +108,7 @@
                       <i class="bi bi-o"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>not yet</h6>
+                      <h6>not </h6>
                      
                     </div>
                   </div>

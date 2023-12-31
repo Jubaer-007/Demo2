@@ -3,7 +3,12 @@
 
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-phone d-flex align-items-center"><span>+1 5589 55488 55</span></i>
-        <i class="bi bi-clock d-flex align-items-center ms-4"><span> Mon-Sat: 11AM - 23PM</span></i>
+        <i class="bi bi-clock d-flex align-items-center ms-4"><span>
+           @php
+        $current_time = date('Y-m-d H:i:s');
+        echo $current_time;
+        @endphp
+      </span></i>
       </div>
 
       <div class="languages d-none d-md-flex align-items-center">

@@ -23,18 +23,31 @@ class TeamController extends Controller
         //     'name'          =>'required',
         //     'price'          =>'required|numeric|min:0',
         //     'description'   =>'required|string|min:10',
-        //     'category_id'   =>'required|numeric|min:0',
+            // 'category_id'   =>'required|numeric|min:0',
         //     'status'        =>'required|numeric:min:0',
         //     'image'         =>'required:image|mimes:jpeg,jpg,svg|maz:1048',
             
         // ]);
 
-        Team::create([
-            'name'          =>$request->name,
-            'member_id'   =>$request->member_id,
-            'status'        =>$request->status,
-            
-        ]);
+        
+        foreach($request->members as $member){
+            $data = Team::where('member_id',$member)->exists();
+            // dd(!$data);
+           if($data){
+            foreach($request->members as $member){
+
+                Team::create([
+               'name'          =>$request->name,
+               'member_id'      =>$member,
+               'status'        =>$request->status,
+               
+                ]);
+            }
+              
+        }
+        dd();
+
+    }
         Toastr::success('successfully created', 'Team');
         return redirect()->route('team.index');
     }

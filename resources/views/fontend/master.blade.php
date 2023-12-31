@@ -45,9 +45,9 @@
 
   <main id="main">
  
-    @yield('menu')
     
-    @yield('menuItem')
+   @yield('content')
+
 
 
     <!-- ======= About Section ======= -->

@@ -22,9 +22,9 @@
                             </div>
                             <div class="mb-3">
                                 <label for=""> Select Category</label>
-                                <select name="category_id" id="" class="form-control">
+                                <select name="categories[]" multiple id="" class="form-control">
                                     @foreach($categories as $id=>$category)
-                                    <option value="{{$category->id}}" @if ($category->id == $menu->categroy_id) checked
+                                    <option value="{{$category->id}}" @if ($category->id == $menu->category_id) checked
                                         
                                     @endif>{{$category->name}}</option>
                                     @endforeach

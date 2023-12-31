@@ -21,12 +21,25 @@ use App\Http\Controllers\MenuController;
 
 
 Route::get('/',[WebHomeController::class,'index'])->name('web.home');
-// Route::get('/menu',[WebHomeController::class,'menu'])->name('home.menu');
-// Route::get('/menuItem',[WebHomeController::class,'menuItem'])->name('home.menuItem');
+Route::get('/menu',[WebHomeController::class,'menu'])->name('home.menu');
+Route::get('/combo',[WebHomeController::class,'combo'])->name('home.combo');
+Route::get('/event',[WebHomeController::class,'event'])->name('home.event');
+
+Route::get('/add-to-cart/{id}', [WebHomeController::class, 'addToCart'])->name('add.to.cart');
+Route::get('/cart-view', [WebHomeController::class, 'cartView'])->name('cart.view');
+Route::get('/cart-item-remove/{id}', [WebHomeController::class, 'cartItemRemove'])->name('cart.item.remove');
+Route::get('/cart-clear', [WebHomeController::class, 'clearCart'])->name('cart.clear');
+
+
+// Route::get('/add-to-cart/{id}', [WebHomeController::class, 'addToCartCombo'])->name('add.to.cart.combo');
 
 // Route::resource('web',WebController::class);
+Route::get('/checkout', [WebHomeController::class, 'checkout'])->name('checkout');
+Route::post('/place-order', [WebHomeController::class, 'placeOrder'])->name('place.order');
 
 Route::group(['prefix'=> 'admin'], function () {
+    
+
 
     Route::get('/',[HomeController::class,'home'])->name('home');
     

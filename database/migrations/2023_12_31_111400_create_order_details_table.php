@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_items', function (Blueprint $table) {
+        Schema::create('order_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id');
+            $table->foreignId('menu_id');
+            $table->double('price',10,2);
+            $table->integer('qty');
+            $table->double('subtotal',10,2);
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_items');
+        Schema::dropIfExists('order_details');
     }
 };

@@ -3,7 +3,7 @@
 <ul class="sidebar-nav" id="sidebar-nav">
 
   <li class="nav-item">
-    <a class="nav-link " href="index.html">
+    <a class="nav-link " href="{{route('dashboard')}}">
       <i class="bi bi-grid"></i>
       <span>Dashboard</span>
     </a>
@@ -61,6 +61,11 @@
       <li class="nav-item">
         <a class="nav-link collapsed"href="">
           <i class="bi bi-menu-button-wide"></i><span>Order</span>
+        </a>   
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed"href="">
+          <i class="bi bi-menu-button-wide"></i><span>OrderDetail</span>
         </a>   
       </li>
       <li class="nav-item">

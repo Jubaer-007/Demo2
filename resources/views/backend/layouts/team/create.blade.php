@@ -21,7 +21,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for=""> Select Member</label>
-                                <select name="member_id" id="" class="form-control">
+                                <select name="members[]" multiple id="" class="form-control">
                                     @foreach($members as $id=>$member)
                                     <option value="{{$member->id}}">{{$member->name}}</option>
                                     @endforeach

@@ -4,9 +4,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComboController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MemberController;
-use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ReportController;
@@ -25,6 +25,14 @@ Route::get('/menu',[WebHomeController::class,'menu'])->name('home.menu');
 Route::get('/combo',[WebHomeController::class,'combo'])->name('home.combo');
 Route::get('/event',[WebHomeController::class,'event'])->name('home.event');
 
+Route::controller(CustomerController::class)->group(function(){
+    Route::get('register-form','registerForm')->name('registerForm');
+    Route::post('register','register')->name('register');
+    Route::get('login-form','loginForm')->name('loginForm');
+    Route::post('login','login')->name('login');
+
+});
+
 Route::get('/add-to-cart/{id}', [WebHomeController::class, 'addToCart'])->name('add.to.cart');
 Route::get('/cart-view', [WebHomeController::class, 'cartView'])->name('cart.view');
 Route::get('/cart-item-remove/{id}', [WebHomeController::class, 'cartItemRemove'])->name('cart.item.remove');
@@ -38,8 +46,6 @@ Route::get('/checkout', [WebHomeController::class, 'checkout'])->name('checkout'
 Route::post('/place-order', [WebHomeController::class, 'placeOrder'])->name('place.order');
 
 Route::group(['prefix'=> 'admin'], function () {
-    
-
 
     Route::get('/',[HomeController::class,'home'])->name('home');
     
@@ -57,6 +63,8 @@ Route::group(['prefix'=> 'admin'], function () {
         Route::resource('event',EventController::class);
         Route::resource('member',MemberController::class);
         Route::resource('team',TeamController::class);
+
+      
         
         Route::resource('order',OrderController::class);
         Route::resource('orderItem',OrderItemController::class);

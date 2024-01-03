@@ -28,7 +28,7 @@ class AuthController extends Controller
     $credentials=$request->except(['_token']);
     if(auth()->attempt($credentials))
     {
-        toastr()->success('wow !! successfully login.');
+        toastr()->success('successfully login.');
         return redirect()->route('dashboard');
     }
     else
@@ -53,7 +53,7 @@ public function dashboard()
 public function logout()
 {
     Auth::logout();
-    Toastr::success('wow !! successfully logout');
+    Toastr::success('successfully logout');
     return redirect()->route('login.form');
 }
 

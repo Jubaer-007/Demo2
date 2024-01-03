@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->boolean('status')->default(1);
-            $table->foreignId('menu_id');
             $table->string('description');
             $table->integer('price');
             $table->string('image')->nullable();

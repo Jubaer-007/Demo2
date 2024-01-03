@@ -18,16 +18,16 @@ class EventController extends Controller
     }
     public function store(Request $request){
         // dd($request->all());
-        // $request->validate([
-        //     'name'          =>'required',
-        //     'price'          =>'required|numeric|min:0',
-        //     'description'   =>'required|string|min:10',
-        //     'category_id'   =>'required|numeric|min:0',
-        //     'status'        =>'required|numeric:min:0',
-        //     'image'         =>'required:image|mimes:jpeg,jpg,svg|maz:1048',
+        
+        $request->validate([
+            'what'          =>'required|string|min:3',
+            'where'         =>'required|string|min:3',
+            'date'          =>'required|date',
+            'time'          =>'required',
+            'status'        =>'required|numeric:min:0',
+           
             
-        // ]);
-
+        ]); 
         
 
         Event::create([
@@ -52,15 +52,15 @@ class EventController extends Controller
     }
     public function update(Request $request, $id){
         // dd($request->all());
-        /* $request->validate([
-            'name'          =>'required',
-            'price'          =>'required|numeric|min:0',
-            'description'   =>'required|string|min:10',
-            'category_id'   =>'required|numeric|min:0',
+        $request->validate([
+            'what'          =>'required|string|min:3',
+            'where'         =>'required|string|min:3',
+            'date'          =>'required|date',
+            'time'          =>'required',
             'status'        =>'required|numeric:min:0',
-            'image'         =>'required:image|mimes:jpeg,jpg,svg|maz:1048',
+           
             
-        ]); */
+        ]); 
        
         $event=Event::find($id);
         $event->update([

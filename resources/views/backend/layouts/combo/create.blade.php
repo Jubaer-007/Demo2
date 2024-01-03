@@ -21,7 +21,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for=""> Select Menu</label>
-                                <select name="menu_id" id="menu" class="form-control">
+                                <select name="menus[]" class="selectpicker form-control" multiple data-live-search="trueclass">
                                     @foreach($menus as $id=>$menu)
                                     <option value="{{$menu->id}}">{{$menu->name }}</option>
                                     @endforeach
@@ -78,4 +78,15 @@
     </div>
 </section>
 @endsection
+
+
+@push('js')
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select').selectpicker();
+    });
+</script>
+    
+@endpush
 

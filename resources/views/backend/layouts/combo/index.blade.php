@@ -17,7 +17,6 @@
                         <th scope="col">#</th>
                         <th scope="col">Image</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Menu</th>
                         <th scope="col">Price</th>
                         <th scope="col">Description</th>
                         <th scope="col">Status</th>
@@ -32,10 +31,9 @@
                         <tr>
                             <td>{{++$id}}</td>
                             <td>
-                                <img width="100" height="100" src="{{url('uploads/combos/',$combo->image)}}" alt="image">
+                                <img width="100" height="100" src="{{url('uploads/combos',$combo->image)}}" alt="image">
                             </td>
                             <td>{{$combo->name}}</td>
-                            <td>{{$combo->menu->name}}</td>
                             <td>{{$combo->price}}</td>
                             <td>{{$combo->description}}</td>
                             <td>{{$combo->status == 1 ? "Active" :"Inactive"}}</td>

@@ -21,18 +21,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for=""> Select Member</label>
-                                <select name="members[]" multiple id="" class="form-control">
+                                <select name="members[]" class="selectpicker form-control" multiple data-live-search="trueclass">
                                     @foreach($members as $id=>$member)
                                     <option value="{{$member->id}}">{{$member->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                            
-                            
-
-                
-                      
-
                             
                             <div class="mb-3">
                                 <label for="">Status</label>
@@ -50,3 +45,14 @@
     </div>
 </section>
 @endsection
+
+
+@push('js')
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select').selectpicker();
+    });
+</script>
+    
+@endpush

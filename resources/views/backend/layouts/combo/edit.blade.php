@@ -22,9 +22,9 @@
                             </div>
                             <div class="mb-3">
                                 <label for=""> Select Menu</label>
-                                <select name="menu_id" id="menu" class="form-control">
-                                    @foreach($menus as $id=>$menu)
-                                    <option value="{{$menu->id}}">{{$menu->name }}</option>
+                                <select name="menus[]" class="selectpicker form-control" multiple data-live-search="trueclass">
+                                    @foreach($menu_combos as $id=>$menu)
+                                     value="{{$menu->id}}">{{$menu->menu->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

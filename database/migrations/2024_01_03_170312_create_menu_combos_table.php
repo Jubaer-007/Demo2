@@ -11,21 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('menu_combos', function (Blueprint $table) {
             $table->id();
-            $table->string('what');
-            $table->string('where');
-            $table->date('date');
-            $table->string('time');
-            $table->boolean('status');
-            
+            $table->foreignId('combo_id');
+            $table->foreignId('menu_id');
             $table->timestamps();
         });
     }
 
-   
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('menu_combos');
     }
 };

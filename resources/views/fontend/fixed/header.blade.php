@@ -21,11 +21,13 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       <div class="">
-      <a class="" href="">Login</a>
-      <span>/</span>
-      <a class="" href="">Registraion</a>
+
+      
+
      <a class="btn btn-primary" href="{{route('login.form')}}">Admin</a>
 
     </div>
     </div>
   </header><!-- End Header -->
+
+

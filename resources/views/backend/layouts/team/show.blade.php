@@ -10,7 +10,15 @@
                     
                    
                     <h5><span>Name: </span>{{$team->name}}</h5>
-                    <h5><span>Team: </span>{{$team->member->name}}</h5>
+
+                    <h5><span>Members: </span>
+                    @foreach ($team_members as $member)
+
+                    {{$member->member->name}} <span>,</span>
+                        
+                    @endforeach
+                    </h5>
+
                     <h5><span>Status: </span>{{$team->status ==1 ? 'Active': "Inactive"}}</h5>
                     
                   

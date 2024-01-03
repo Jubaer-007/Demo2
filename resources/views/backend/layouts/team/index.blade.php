@@ -16,7 +16,6 @@
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Member</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                         </tr>
@@ -26,7 +25,7 @@
                         <tr>
                             <td>{{++$key}}</td>
                             <td>{{$team->name}}</td>
-                            <td>{{$team->member->name}}</td>
+                            
                             <td>{{$team->status == 1 ? "Active" :"Inactive"}}</td>
                             
                             <td class="d-flex ">

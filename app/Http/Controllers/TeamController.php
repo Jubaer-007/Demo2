@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use App\Models\Team;
+use App\Models\TeamMember;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
     public function index(){
-        $teams=Team::with('member')->get();
+        $teams=Team::all();
         return view('backend.layouts.team.index', compact('teams'));
     }
     public function create(){
@@ -19,68 +20,75 @@ class TeamController extends Controller
     }
     public function store(Request $request){
         // dd($request->all());
-        // $request->validate([
-        //     'name'          =>'required',
-        //     'price'          =>'required|numeric|min:0',
-        //     'description'   =>'required|string|min:10',
-            // 'category_id'   =>'required|numeric|min:0',
-        //     'status'        =>'required|numeric:min:0',
-        //     'image'         =>'required:image|mimes:jpeg,jpg,svg|maz:1048',
+        $request->validate([
+            'name'          =>'required',
+            'status'        =>'required|numeric:min:0',
             
-        // ]);
+             
+        ]);
 
-        
-        foreach($request->members as $member){
-            $data = Team::where('member_id',$member)->exists();
-            // dd(!$data);
-           if($data){
-            foreach($request->members as $member){
-
-                Team::create([
-               'name'          =>$request->name,
-               'member_id'      =>$member,
-               'status'        =>$request->status,
+        $team =Team::create([
+            'name'          =>$request->name,
+            'status'        =>$request->status,
                
-                ]);
-            }
-              
-        }
-        dd();
+            ]);
+            
+        foreach($request->members as $member){
 
-    }
-        Toastr::success('successfully created', 'Team');
+            TeamMember::create([
+                'team_id'   =>$team->id,
+                'member_id'   =>$member,
+            ]);
+        }
+
+        Toastr::success('successfully created');
         return redirect()->route('team.index');
     }
     public function show($id){
         $team=Team::find($id);
-        
-        return view('backend.layouts.team.show',compact('team'));
+        $team_members = TeamMember::with(['team','member'])
+                        ->where('team_id',$team->id)->get();
+        return view('backend.layouts.team.show',compact('team','team_members'));
     }
     public function edit($id){
-        $team=team::find($id);
+
+        $team=Team::find($id);
         $members= Member::where('status',1)->get();
-        return view('backend.layouts.team.edit',compact('team','members'));
+        $team_members = TeamMember::with(['team','member'])
+                                    ->where('team_id',$team->id)->get();
+        return view('backend.layouts.team.edit',compact('team','team_members','members'));
     }
     public function update(Request $request, $id){
         // dd($request->all());
-        /* $request->validate([
-            'name'          =>'required',
-            'price'          =>'required|numeric|min:0',
-            'description'   =>'required|string|min:10',
-            'category_id'   =>'required|numeric|min:0',
-            'status'        =>'required|numeric:min:0',
-            'image'         =>'required:image|mimes:jpeg,jpg,svg|maz:1048',
-            
-        ]); */
-       
-        $team=Team::find($id);
-        $team->update([
-            'name'          =>$request->name,
-            'member_id'     =>$request->member_id,
-            'status'        =>$request->status,
-        ]);
-        Toastr::success('successfully updated', 'Team');
-        return redirect()->route('team.index');
+        try{
+            $request->validate([
+                'name'          =>'required',
+                'status'        =>'required|numeric:min:0',
+    
+                
+            ]);
+           $team =Team::find($id);
+            $team->update([
+                'name'          =>$request->name,
+                'status'        =>$request->status,
+                   
+                ]);
+                
+            foreach($request->members as $member){
+    
+                TeamMember::update([
+                    'team_id'   =>$team->id,
+                    'member_id'   =>$member,
+                ]);
+            }
+    
+            Toastr::success('successfully update');
+            return redirect()->route('team.index');
+
+        }catch(\Exception $e){
+            Toastr::error('Something went wrong.'.$e->getMessage());
+            return redirect()->back();
+        }
         
     }
     public function destroy($id){

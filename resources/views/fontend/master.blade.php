@@ -41,7 +41,7 @@
   
   @include('fontend.fixed.header')
   <!-- ======= Hero Section ======= -->
-  @include('fontend.fixed.hero')
+ 
 
   <main id="main">
  

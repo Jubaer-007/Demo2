@@ -28,8 +28,9 @@ Route::get('/event',[WebHomeController::class,'event'])->name('home.event');
 Route::controller(CustomerController::class)->group(function(){
     Route::get('register-form','registerForm')->name('registerForm');
     Route::post('register','register')->name('register');
-    Route::get('login-form','loginForm')->name('loginForm');
-    Route::post('login','login')->name('login');
+    Route::get('customer/login-form','CustomerLoginForm')->name('customer.loginForm');
+    Route::post('customer/login','CustomerLogin')->name('customer.login');
+    Route::get('customer/loginout','CustomerLoginOut')->name('customer.logout');
 
 });
 

@@ -1,5 +1,6 @@
 @extends('fontend.master')
 
+@include('fontend.fixed.hero')
 
 @section('content')
 <section id="menu" class="menu section-bg">

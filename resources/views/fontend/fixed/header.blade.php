@@ -5,7 +5,7 @@
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar order-last order-lg-0 ">
         <ul>
           <li><a class="nav-link scrollto active" href="{{route('web.home')}}">Home</a></li>
           <li><a class="nav-link scrollto" href="{{route('home.menu')}}">Menu</a></li>
@@ -21,11 +21,18 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       <div class="">
+        @if (auth('customer')->user())
+            <span> {{auth('customer')->user()->name}}</span>
+          <a href="{{route('customer.logout')}}">Logout</a>
 
-      
+          @else
+
+          <a href="{{route('customer.loginForm')}}">Login</a>
+          <span>/</span>
+          <a href="{{route('registerForm')}}">Registration</a>
+        @endif
 
      <a class="btn btn-primary" href="{{route('login.form')}}">Admin</a>
-
     </div>
     </div>
   </header><!-- End Header -->

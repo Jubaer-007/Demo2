@@ -21,6 +21,7 @@ class WebHomeController extends Controller
     {
         $menus = Menu::all();
         // dd($menus);
+        
         return view("fontend.fixed.menu_section",compact('menus'));
     }
     public function combo()
@@ -117,6 +118,7 @@ class WebHomeController extends Controller
     public function placeOrder(Request $request)
     {
 
+      // dd($request->all());
     $request->validate([
   
     ]);
@@ -127,13 +129,16 @@ class WebHomeController extends Controller
       DB::beginTransaction();
       //create order first
       $order = Order::create([
-        // 'customer_id' => auth('customer')->user()->id,
-        'name' => $request->first_name . ' ' . $request->last_name,
-        'email' => $request->email,
-        'address' => $request->address,
-        'payment_method' => $request->paymentMethod,
-        'total' => array_sum(array_column($myCart, 'sub_total')),
-        'payment_status' => 'pending',
+        'customer_id' => auth('customer')->user()->id ?? '',
+        'name'        => $request->name,
+        'time'        => $request->time,
+        'date'        => $request->date,
+        'email'       => $request->email,
+        'address'     => $request->address, 
+
+        'payment_method'  => $request->paymentMethod,
+        'total'           => array_sum(array_column($myCart, 'sub_total')),
+        'payment_status'  => 'pending',
       ]);
 
 
@@ -142,7 +147,7 @@ class WebHomeController extends Controller
 
         OrderDetail::create([
           'order_id' => $order->id,
-          'product_id' => $key,
+          'menu_id' => $key,
           'price' => $cart['price'],
           'qty' => $cart['quantity'],
           'subtotal' => $cart['sub_total'],
@@ -150,22 +155,16 @@ class WebHomeController extends Controller
       }
 
       DB::commit();
-
-      if ($request->paymentMethod == 'ssl') {
-
-        // redirect to payment page
-        $this->payNow($order);
-      }
-
       Toastr::success('Order Placed.');
 
       //assume that order placed succssfully. 
       session()->forget('cart');
 
-      return redirect()->route('home');
+      return redirect()->route('web.home');
     } catch (\Throwable $e) {
       DB::rollBack();
       Toastr::error('Something went wrong.');
+      dd('error make');
       return redirect()->back();
     }
   } 

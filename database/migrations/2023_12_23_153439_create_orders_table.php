@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->nullable();
+            $table->foreignId('customer_id');
             $table->string('name');
+            $table->date('date')->nullable();
+            $table->timestamp('time')->nullable();
             $table->string('email');
             $table->text('address');
             $table->string('payment_status')->default('pending');

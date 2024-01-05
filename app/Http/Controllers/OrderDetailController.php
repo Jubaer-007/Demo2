@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OrderItem;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 
-class OrderItemController extends Controller
+class OrderDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $orderDetails= OrderDetail::orderBy('id','desc')->paginate(4);
+      return view("backend.layouts.orderDetail",compact('orderDetails'));
     }
 
     /**
@@ -34,7 +35,7 @@ class OrderItemController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OrderItem $orderItem)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +43,7 @@ class OrderItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(OrderItem $orderItem)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +51,7 @@ class OrderItemController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, OrderItem $orderItem)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +59,7 @@ class OrderItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(OrderItem $orderItem)
+    public function destroy(string $id)
     {
         //
     }

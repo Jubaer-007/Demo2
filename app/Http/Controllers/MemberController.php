@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MemberController extends Controller
 {
     public function index(){
-        $members=Member::all();
+        $members=Member::orderBy('id','desc')->paginate(4);
         return view('backend.layouts.member.index', compact('members'));
     }
     public function create(){
@@ -34,7 +34,7 @@ class MemberController extends Controller
         Member::create([
             'name'      =>$request->name,
             'status'    =>$request->status,
-            'image'      =>$request->image
+            'image'      =>$fileName
             
         ]);
         Toastr::success('successfully created', 'memeber');
@@ -68,7 +68,7 @@ class MemberController extends Controller
         $memeber->update([
             'name'      =>$request->name,
             'status'    =>$request->status,
-            'image'     =>$request->image
+            'image'     =>$fileName
             
         ]);
         Toastr::success('successfully updated', 'Memeber');

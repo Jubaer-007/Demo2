@@ -1,12 +1,16 @@
 @extends('fontend.master')
 
-<style>
-    .register{
-        margin-top:220px !important;
-    }
-</style>
+
 
 @section('content')
+
+<style>
+    .card{
+      background-color:#436770;
+      margin-top:120px;
+      color:#fff;
+    }
+</style>
 <div class="container">
     <div class="row mt-5 p-5 register">
         <div class="col-md-8 offset-md-2">
@@ -17,21 +21,21 @@
                         @csrf
                     <div class="mb-3">
                         <label for="">Name</label>
-                        <input type="text" name="name" placeholder="Name" class="form-control" value="{{old('name')}}">
+                        <input style=" background-color:#bbdae2;" type="text" name="name" placeholder="Name" class="form-control" value="{{old('name')}}">
                     </div>
 
                     <div class="mb-3">
                         <label for="">Email</label>
-                        <input type="email" name="email" placeholder="example@gmail.com" class="form-control" value="{{old('email')}}">
+                        <input style=" background-color:#bbdae2;" type="email" name="email" placeholder="example@gmail.com" class="form-control" value="{{old('email')}}">
                     </div>
 
                     <div class="mb-3">
                         <label for="">Password</label>
-                        <input type="password" name="password" placeholder="password" class="form-control" value="{{old('password')}}">
+                        <input style=" background-color:#bbdae2;" type="password" name="password" placeholder="password" class="form-control" value="{{old('password')}}">
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-outline-light">Register</button>
                     </form>
                 </div>
             </div>

@@ -48,20 +48,9 @@
     
    @yield('content')
 
+  </main>
 
-
-    <!-- ======= About Section ======= -->
-
-    @include('fontend.fixed.about')
-    <!-- ======= Why Us Section ======= -->
-
-    
-    <!-- ======= Contact Section ======= -->
-    @include('fontend.fixed.contact')
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
+  
  @include('fontend.fixed.footer')
 
   

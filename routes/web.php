@@ -8,6 +8,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TeamController;
@@ -69,7 +70,7 @@ Route::group(['prefix'=> 'admin'], function () {
       
         
         Route::resource('order',OrderController::class);
-        Route::resource('orderItem',OrderItemController::class);
+        Route::resource('orderDetail',OrderDetailController::class);
         Route::resource('report',ReportController::class);
     });
 

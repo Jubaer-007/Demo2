@@ -1,14 +1,20 @@
 @extends('fontend.master')
 
 @section('content')
-
-<div class="container">
-      <div class="py-5 text-center">
+<style>
+    .checkout{
+      background-color: #7c7c7c;
+      margin-top:150px;
+    }
+</style>
+<div class="container checkout">
+      <div class="py-2 text-center">
          <h2>Checkout form</h2>
+         <hr>
         </div>
 
-      <div class="row">
-        <div class="col-md-4 order-md-2 mb-4">
+      <div class="row p-3">
+        <div class="col-md-4 order-md-2">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Your cart</span>
             <span class="badge badge-secondary badge-pill"> {{session()->has('cart')?count(session()->get('cart')):0}}</span>
@@ -45,37 +51,34 @@
             @csrf
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="firstName">First name</label>
-                <input name="firstName" type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
+                <label for="firstName">Name</label>
+                <input name="name" type="text" class="form-control" id="name" placeholder="Name" value="" required>
+                
               </div>
               <div class="col-md-6 mb-3">
-                <label for="lastName">Last name</label>
-                <input name="lastName" type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid last name is required.
-                </div>
+                <label for="time">Time</label>
+                <input name="time" type="time" class="form-control" id="time" placeholder="" value="" required>
+                
               </div>
             </div>
 
+            <div class="mb-3">
+              <label for="date">Date <span class="text-muted"></span></label>
+              <input name="date" type="date" class="form-control" id="date" >
+              
+            </div>
             
 
             <div class="mb-3">
               <label for="email">Email <span class="text-muted">(Optional)</span></label>
               <input name="email" type="email" class="form-control" id="email" placeholder="you@example.com">
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
+              
             </div>
 
             <div class="mb-3">
               <label for="address">Address</label>
               <input name="address" type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
+              
             </div>
 
             

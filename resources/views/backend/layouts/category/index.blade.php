@@ -5,13 +5,15 @@
 <section class="department">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card  shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between">
                 <h3 class="m-0 font-weight-bold text-primary">Categorys List</h3>
                 <a class="btn btn-primary py-2" href="{{ route('category.create') }}">+Add New</a>
             </div>
-                <div class="card-body">
-                <table class="table table-striped table-hover">
+                <div class="card-body ">
+                    <div class="">
+
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                         <th scope="col">#</th>
@@ -44,10 +46,12 @@
                       @endforeach
                     </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+{{$categories->links()}}
 @endsection

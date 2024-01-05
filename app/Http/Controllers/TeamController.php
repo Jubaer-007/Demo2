@@ -11,8 +11,9 @@ use Illuminate\Http\Request;
 class TeamController extends Controller
 {
     public function index(){
-        $teams=Team::all();
-        return view('backend.layouts.team.index', compact('teams'));
+        $teams=Team::orderBy('id','desc')->paginate(4);
+        $team_members= TeamMember::all();
+        return view('backend.layouts.team.index', compact('teams','team_members'));
     }
     public function create(){
         $members= Member::where('status',1)->get();
@@ -32,10 +33,17 @@ class TeamController extends Controller
             'status'        =>$request->status,
                
             ]);
+        
             
-        foreach($request->members as $member){
+            foreach($request->members as $member){
+            $data=TeamMember::where('member_id',$member)->exists();
+                if($data){
 
-            TeamMember::create([
+                    Toastr::error('This Member already in a teams.');
+                    return redirect()->back();   
+                }
+
+                TeamMember::create([
                 'team_id'   =>$team->id,
                 'member_id'   =>$member,
             ]);
@@ -61,29 +69,32 @@ class TeamController extends Controller
     public function update(Request $request, $id){
         // dd($request->all());
         try{
+            $team= Team::find($id);
             $request->validate([
                 'name'          =>'required',
                 'status'        =>'required|numeric:min:0',
-    
                 
+                 
             ]);
-           $team =Team::find($id);
-            $team->update([
+    
+                $team->update([
                 'name'          =>$request->name,
                 'status'        =>$request->status,
                    
                 ]);
+            
                 
-            foreach($request->members as $member){
-    
-                TeamMember::update([
+                foreach($request->members as $member){
+        
+                    TeamMember::create([
                     'team_id'   =>$team->id,
                     'member_id'   =>$member,
                 ]);
             }
     
-            Toastr::success('successfully update');
+            Toastr::success('successfully updated');
             return redirect()->route('team.index');
+            
 
         }catch(\Exception $e){
             Toastr::error('Something went wrong.'.$e->getMessage());

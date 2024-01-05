@@ -59,12 +59,12 @@
         </a>   
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed"href="">
+        <a class="nav-link collapsed"href="{{route('order.index')}}">
           <i class="bi bi-menu-button-wide"></i><span>Order</span>
         </a>   
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed"href="">
+        <a class="nav-link collapsed"href="{{route('orderDetail.index')}}">
           <i class="bi bi-menu-button-wide"></i><span>OrderDetail</span>
         </a>   
       </li>

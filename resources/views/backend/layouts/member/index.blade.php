@@ -5,13 +5,13 @@
 <section class="department">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card shadow p-4">
             <div class="card-header py-3 d-flex justify-content-between">
-                <h3 class="m-0 font-weight-bold text-primary">members List</h3>
+                <h3 class="m-0 font-weight-bold text-primary">Members List</h3>
                 <a class="btn btn-primary py-2" href="{{ route('member.create') }}">+Add New</a>
             </div>
                 <div class="card-body">
-                <table class="table table-striped table-hover">
+                <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                         <th scope="col">#</th>
@@ -29,7 +29,7 @@
                         <tr>
                             <td>{{++$id}}</td>
                             <td>
-                                <img width="60" height="60" src="{{url('uploads/members/',$member->image)}}" alt="image">
+                                <img width="80" height="80" src="{{ url('/uploads/members/',$member->image) }}" alt="image">
                             </td>
                             <td>{{$member->name}}</td>
                             <td>{{$member->status == 1 ? "Active" :"Inactive"}}</td>
@@ -53,5 +53,5 @@
         </div>
     </div>
 </section>
-
+{{$members->links()}}
 @endsection

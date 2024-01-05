@@ -23,8 +23,9 @@
                             <div class="mb-3">
                                 <label for=""> Select Menu</label>
                                 <select name="menus[]" class="selectpicker form-control" multiple data-live-search="trueclass">
-                                    @foreach($menu_combos as $id=>$menu)
-                                     value="{{$menu->id}}">{{$menu->menu->name }}</option>
+                                    
+                                    @foreach($menu_combos as $id=>$item)
+                                     <option  value="{{$item->id}}">{{$item->menu->name ?? '' }}</option>
                                     @endforeach
                                 </select>
                             </div>

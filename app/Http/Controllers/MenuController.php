@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Log;
 class MenuController extends Controller
 {
     public function index(){
-        $menus=Menu::with('category')->get();
+        $menus=Menu::with('category')->orderBy('id','desc')->paginate(4);
         return view('backend.layouts.menu.index', compact('menus'));
     }
     public function create(){

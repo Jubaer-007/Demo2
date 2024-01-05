@@ -5,13 +5,13 @@
 <section class="department">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between">
                 <h3 class="m-0 font-weight-bold text-primary">Menus List</h3>
                 <a class="btn btn-primary py-2" href="{{ route('menu.create') }}">+Add New</a>
             </div>
                 <div class="card-body">
-                <table class="table table-striped table-hover">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                         <th scope="col">#</th>
@@ -56,5 +56,7 @@
         </div>
     </div>
 </section>
+
+{{ $menus->links()}}
 
 @endsection

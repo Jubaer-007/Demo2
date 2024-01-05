@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class ComboController extends Controller
 {
     public function index(){
-        $combos=Combo::all();
+        $combos=Combo::orderBy('id','desc')->paginate(4);
        
         return view('backend.layouts.combo.index', compact('combos'));
     }
@@ -55,7 +55,7 @@ class ComboController extends Controller
         }
         
         Toastr::success('successfully created', 'Combo');
-        return redirect()->back();
+        return redirect()->route('combo.index');
     }
     public function show($id){
         $combo=Combo::find($id);
@@ -68,6 +68,8 @@ class ComboController extends Controller
         $combo=Combo::find($id);
         $menus= Menu::where('status',1)->get();
         $menu_combos = MenuCombo::where('combo_id',$combo->id)->get();
+        // dd($menu_combos);
+
         return view('backend.layouts.combo.edit',compact('combo','menus','menu_combos'));
     }
     public function update(Request $request, $id){
@@ -107,7 +109,7 @@ try{
         ]);
     }
     
-    Toastr::success('successfully created', 'Combo');
+    Toastr::success('successfully updated', 'Combo');
     return redirect()->back();
 
 }catch(\Exception $e){

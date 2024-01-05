@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Combo;
 use App\Models\Event;
 use App\Models\Menu;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
@@ -25,8 +26,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::useBootstrap();
+
        view::share('menus', Menu::all());
        view::share('combos', Combo::all());
        view::share('events', Event::all());
+
+
     }
 }

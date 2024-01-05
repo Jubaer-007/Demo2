@@ -11,7 +11,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="">What:</label>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="event Name" value="{{old('name')}}">
+                                    <input type="text" name="what" class="form-control @error('name') is-invalid @enderror" placeholder="event Name" value="{{old('name')}}">
   
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -54,6 +54,19 @@
                                      @enderror
                             </div>
 
+                            <div class="mb-3">
+                                <label for="">Team:</label>
+                                  <select name="team_id" class="form-control" id="">
+                                    @foreach ($teams as $team)
+                                        <option value="{{$team->id}}">{{$team->name}}</option>
+                                    @endforeach
+                                  </select>
+                                     @error('time')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                     @enderror
+                            </div>
                             
                             <div class="mb-3">
                                 <label for="">Status</label>

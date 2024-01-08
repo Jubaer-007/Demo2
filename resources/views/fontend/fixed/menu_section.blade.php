@@ -19,13 +19,13 @@
           <div class="card mb-3">
       <img height="200px" src="{{ url('uploads/menus/',$menu->image)}}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title"><span>Menu: </span>{{$menu->name}}</h5>
-        <p class="card-text"><span>Descriptions: </span>{{ $menu->description }}</p>
+        <h5 class="card-title"><span><b>Menu:</b> </span>{{$menu->name}}</h5>
+        <p class="card-text"><span><b>Descriptions:</b> </span>{{ $menu->description }}</p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><span>Category: </span>{{$menu->category->name}}</li>
-        <li class="list-group-item"><span>Status: </span>{{$menu->status ? "Available" : "No Available"}}</li>
-        <li class="list-group-item badge bg-warning p-3"><span style="font-size:14px">Price: </span style="font-size:14px">{{$menu->price}} BDT.</li>
+        <li class="list-group-item"><span><b>Category: </b></span>{{$menu->category->name}}</li>
+        <li class="list-group-item"><span><b>Status:</b> </span class="bg-success">{{$menu->status ? "Available" : "No Available"}}</li>
+        <li class="list-group-item badge bg-warning p-3"><span style="font-size:14px"><b>Price:</b> </span style="font-size:14px">{{$menu->price}} BDT.</li>
       </ul>
       <div class="card-body">
         <a href="{{route('add.to.cart',$menu->id)}}" class="card-link btn btn-danger">Add To Cart</a>

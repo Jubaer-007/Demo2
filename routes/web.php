@@ -71,7 +71,13 @@ Route::group(['prefix'=> 'admin'], function () {
         
         Route::resource('order',OrderController::class);
         Route::resource('orderDetail',OrderDetailController::class);
-        Route::resource('report',ReportController::class);
+
+        Route::controller(ReportController::class)->group(function(){
+            Route::get('report/report','Report')->name('report');
+            Route::get('report/search','ReportSearch')->name('report.search');
+           
+        });
+        
     });
 
 });

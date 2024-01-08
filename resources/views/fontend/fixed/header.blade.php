@@ -28,8 +28,7 @@
           @else
 
           <a href="{{route('customer.loginForm')}}">Login</a>
-          <span>/</span>
-          <a href="{{route('registerForm')}}">Registration</a>
+          
         @endif
 
      <a class="btn btn-primary" href="{{route('login.form')}}">Admin</a>

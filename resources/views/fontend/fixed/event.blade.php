@@ -17,14 +17,15 @@
             <div class="card mb-3">
             
               <div class="card-body">
-                <h5 class="card-title"><span>Event Name:</span>{{$event->what}}</h5>
+                <h5 class="card-title"><span>Event:</span>{{$event->what}}</h5>
                 <p class="card-text"><span>Where:</span>{{$event->where}}</p>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item badge ">{{$event->status? "Available" : "NotAvailable"}}</li>
                 <p ><span>Date: </span class="badge bg-warning p-3">{{$event->date}}</p>
                 <p ><span>Time: </span class="badge bg-warning p-3">{{$event->time}}</p>
-                <a class="btn btn-outline-success p-2" href="">Booking</a>
+                <a class="btn btn-outline-success p-2" href="">Book</a>
+                
               </ul>
             </div>
             </div>

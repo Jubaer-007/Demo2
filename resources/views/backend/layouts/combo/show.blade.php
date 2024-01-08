@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="card">
-                <h1 class="card-header text-center mb-3"><strong>Menu Details</strong></h1>
+                <h1 class="card-header text-center mb-3"><strong>Combo Details</strong></h1>
                 <div class="card-body">
                     
                     <h5><img width="200" height="150" src="{{url('uploads/combos/',$combo->image)}}" alt="image"></h5>

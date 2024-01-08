@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card  shadow mb-4">
             <div class="card-header py-3 d-flex justify-content-between">
-                <h3 class="m-0 font-weight-bold text-primary">Categorys List</h3>
+                <h3 class="m-0 font-weight-bold text-primary">Order Details</h3>
                 
             </div>
                 <div class="card-body ">

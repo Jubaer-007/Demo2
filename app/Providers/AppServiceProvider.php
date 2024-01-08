@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Combo;
 use App\Models\Event;
 use App\Models\Menu;
+use App\Models\MenuCombo;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
@@ -30,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
 
        view::share('menus', Menu::all());
        view::share('combos', Combo::all());
+       view::share('menu_combos', MenuCombo::all());
        view::share('events', Event::all());
 
 

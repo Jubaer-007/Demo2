@@ -28,26 +28,41 @@ class TeamController extends Controller
              
         ]);
 
-        $team =Team::create([
-            'name'          =>$request->name,
-            'status'        =>$request->status,
-               
-            ]);
-        
-            
-            foreach($request->members as $member){
+        // dd($request->id);
+       
+
+
+
+        foreach($request->members as $member){
             $data=TeamMember::where('member_id',$member)->exists();
-                if($data){
+            if($data){
+                
+                Toastr::error('This Member already in a teams.');
+                return redirect()->back();   
+            }
 
-                    Toastr::error('This Member already in a teams.');
-                    return redirect()->back();   
-                }
-
-                TeamMember::create([
-                'team_id'   =>$team->id,
-                'member_id'   =>$member,
-            ]);
         }
+            if(!$data){
+                $team =Team::create([
+                'name'          =>$request->name,
+                'status'        =>$request->status,
+                    
+                ]);
+
+                $id=$team->id;
+                foreach($request->members as $member){
+                    $temaMember=TeamMember::create([
+                    'team_id'   =>$id,
+                    'member_id' =>$member,
+                    ]);
+                }
+        }
+                
+        
+
+                
+        
+        
 
         Toastr::success('successfully created');
         return redirect()->route('team.index');

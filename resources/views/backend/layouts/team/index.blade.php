@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card shadow p-4">
             <div class="card-header py-3 d-flex justify-content-between">
-                <h3 class="m-0 font-weight-bold text-primary">teams List</h3>
+                <h3 class="m-0 font-weight-bold text-primary">Teams List</h3>
                 <a class="btn btn-primary py-2" href="{{ route('team.create') }}">+Add New</a>
             </div>
                 <div class="card-body">

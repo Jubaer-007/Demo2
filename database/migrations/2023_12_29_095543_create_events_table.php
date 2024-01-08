@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('time');
             $table->boolean('status');
-            
+            $table->foreignId('team_id');
             $table->timestamps();
         });
     }

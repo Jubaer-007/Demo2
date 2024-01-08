@@ -29,7 +29,7 @@
                         <input style=" background-color:#bbdae2;" type="password" name="password" placeholder="password" class="form-control" value="{{old('password')}}">
                     </div>
 
-
+                    <a style="text-decoration:underline;" href="{{route('registerForm')}}">Don't have any account?</a><br><br>
                     <button type="submit " class="btn btn-outline-light">Login</button>
                     </form>
                 </div>

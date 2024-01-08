@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="card">
-                <h1 class="card-header text-center mb-3"><strong>team Details</strong></h1>
+                <h1 class="card-header text-center mb-3"><strong>Team Details</strong></h1>
                 <div class="card-body">
                     
                    

@@ -16,9 +16,9 @@ return new class extends Migration
             $table->foreignId('customer_id');
             $table->string('name');
             $table->date('date')->nullable();
-            $table->timestamp('time')->nullable();
-            $table->string('email');
-            $table->text('address');
+            $table->time('time')->nullable();
+            $table->string('email')->nullable();
+            $table->text('address')->nullable();
             $table->string('payment_status')->default('pending');
             $table->string('payment_method',20);
             $table->double('total',10,2);

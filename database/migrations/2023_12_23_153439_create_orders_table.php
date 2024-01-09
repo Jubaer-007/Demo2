@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('payment_status')->default('pending');
             $table->string('payment_method',20);
             $table->double('total',10,2);
+           
             $table->timestamps();
         });
     }

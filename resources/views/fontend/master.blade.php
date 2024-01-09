@@ -68,6 +68,8 @@
   <!-- Template Main JS File -->
   <script src="{{asset('fontend')}}/assets/js/main.js"></script>
 
+  @stack('js')
+
 </body>
 
 </html>

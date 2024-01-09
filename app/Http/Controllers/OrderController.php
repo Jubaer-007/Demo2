@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -16,6 +17,28 @@ class OrderController extends Controller
       return view("backend.layouts.order",compact('orders'));
     }
 
+
+    public function orderConfirm(Request $request,$id)
+    {
+        $update = Order::find($id);
+        // dd($update->id);
+        if($update->payment_status =='pending'){
+
+            $update->update([
+                'payment_status'    =>'confirm'
+            ]);
+            Toastr::success('Successfully Confirm');
+            return redirect()->back();
+
+        }elseif($update->payment_status =='confirm'){
+            $update->update([
+                'payment_status'    =>'pending'
+            ]);
+             Toastr::success('Successfully Cancel');
+            return redirect()->back();
+        }
+
+    }
     /**
      * Show the form for creating a new resource.
      */

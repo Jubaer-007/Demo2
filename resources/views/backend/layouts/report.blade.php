@@ -52,6 +52,8 @@
                         @php
                             $id=0;
                         @endphp
+
+                    @if (isset($orderReport))
                     
                       @foreach($orderReport as $order)
                         <tr>
@@ -68,6 +70,7 @@
                               
                         </tr>
                       @endforeach
+                      @endif
                     </tbody>
                 </table>
 </div>

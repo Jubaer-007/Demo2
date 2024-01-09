@@ -66,7 +66,14 @@
                       </div>
                     </td>
                     <td class="text-right font-weight-semibold align-middle p-4">{{$cart['price']}}</td>
-                    <td class="align-middle p-4"><input type="text" class="form-control text-center" value="{{$cart['quantity']}}"></td>
+
+                    <td class="align-middle p-4">
+                      <button id="#minus"> - </button>
+                      <span class="badge bg-dark p-2" id="#quantity">{{$cart['quantity']}}</span>
+                      <button id="#plus"> + </button>
+                      
+                    </td>
+
                     <td class="text-right font-weight-semibold align-middle p-4">{{$cart['sub_total']}}</td>
                     <td class="text-center align-middle px-0">
                         <a href="{{route('cart.item.remove',$key)}}" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a>
@@ -107,6 +114,20 @@
       </div>
   </div>
 
-
-
 @endsection
+
+@push('js')
+<script>
+
+  console.log('hello')
+
+  $plus       = document.getElementById('#plus')
+  $minus      = document.getElementById('#minus')
+  $quantity   = document.getElementById('#quantity')
+
+  
+
+
+</script>
+  
+@endpush

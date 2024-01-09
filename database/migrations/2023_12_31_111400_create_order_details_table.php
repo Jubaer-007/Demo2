@@ -18,6 +18,7 @@ return new class extends Migration
             $table->double('price',10,2);
             $table->integer('qty');
             $table->double('subtotal',10,2);
+         
             $table->timestamps();
         });
     }

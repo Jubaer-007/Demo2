@@ -70,6 +70,7 @@ Route::group(['prefix'=> 'admin'], function () {
       
         
         Route::resource('order',OrderController::class);
+        Route::post('order/confirm/{id}',[OrderController::class,'orderConfirm'])->name('order.confirm');
         Route::resource('orderDetail',OrderDetailController::class);
 
         Route::controller(ReportController::class)->group(function(){

@@ -24,6 +24,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Address</th>
                         <th scope="col">Payment Status</th>
+                        <th scope="col">Confirm Status</th>
                         <th scope="col">Payment Method</th>
                         <th scope="col">Total</th>
                         
@@ -44,6 +45,19 @@
                             <td>{{$order->email}}</td>
                             <td>{{$order->address}}</td>
                             <td>{{$order->payment_status}}</td>
+                            <td>
+                                <form action="{{route('order.confirm',$order->id)}}" method="post">
+                                    @csrf
+                                    <!-- <option value="confirm" name="comfirm"></option> -->
+                                    <!-- <input name="confirm" value="confirm" type="text"> -->
+                                    @if ($order->payment_status == 'pending')
+                                        
+                                    <button type="submit" class="btn btn-success">Confirm</button>
+                                    @elseif ($order->payment_status == 'confirm')
+                                    <button type="submit" class="btn btn-danger">Cancel</button>
+                                    @endif
+                                </form>
+                            </td>
                             <td>{{$order->payment_method}}</td>
                             <td>{{$order->total}}</td>
                               

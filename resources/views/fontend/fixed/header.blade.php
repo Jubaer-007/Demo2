@@ -14,7 +14,8 @@
           <!-- <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
 
-          <li ><a class="nav-link scrollto" href="{{route('cart.view')}}" style="margin-left:35px;"> <span class="badge bg-success px-3 py-3" style="font-size:13px">Cart {{session()->has('cart')?count(session()->get('cart')):0}} items
+          <li ><a class="nav-link scrollto" href="{{route('cart.view')}}" style="margin-left:35px;"> <span class="badge bg-success px-3 py-3" style="font-size:13px">
+          Cart {{session()->has('cart') ? array_sum(array_column(session()->get('cart'),'quantity')):0}} items
         </span></a></li></li>
 
         </ul>

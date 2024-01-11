@@ -56,6 +56,7 @@
         @foreach($myCart as $key=>$cart)
     
                   <tr>
+                   
                     <td class="p-4">
                       <div class="media align-items-center">
                         <img src="{{url('uploads/products/'.$cart['image'])}}" class="d-block ui-w-40 ui-bordered mr-4" alt="">
@@ -65,18 +66,23 @@
                         </div>
                       </div>
                     </td>
-                    <td class="text-right font-weight-semibold align-middle p-4">{{$cart['price']}}</td>
+                    <div class="cart">
+                      <div class="item">
+                        
+                        <td class="text-right font-weight-semibold align-middle p-4 iprice" >{{$cart['price']}} </td>
+    
+                        <td class="align-middle p-4">
+                          
+                          <input style='width:60px' type="number" class="quantity" onchange="updateTotal()" min="1" value="{{$cart['quantity']}}">
+                          
+                        
+                        </td>
+                      </div>
+                    </div>
 
-                    <td class="align-middle p-4">
-                      <button id="#minus"> - </button>
-                      <span class="badge bg-dark p-2" id="#quantity">{{$cart['quantity']}}</span>
-                      <button id="#plus"> + </button>
-                      
-                    </td>
-
-                    <td class="text-right font-weight-semibold align-middle p-4">{{$cart['sub_total']}}</td>
+                    <td class="text-right font-weight-semibold align-middle p-4" id="total">{{$cart['sub_total']}} <span><b>BDT.</b></span></td>
                     <td class="text-center align-middle px-0">
-                        <a href="{{route('cart.item.remove',$key)}}" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a>
+                        <a href="{{route('cart.item.remove',$key)}}" class="shop-tooltip close float-none btn btn-outline-danger m-4" title="" data-original-title="Remove">Remove</a>
                     </td>
                   </tr>
               @endforeach
@@ -98,7 +104,7 @@
                 </div>
                 <div class="text-right mt-4">
                   <label class="text-muted font-weight-normal m-0">Total price</label>
-                  <div class="text-large"><strong>{{$myCart?array_sum(array_column($myCart,'sub_total')):0}} <span>.00 BDT.</span></strong></div>
+                  <div class="text-large itotal"><strong>{{$myCart?array_sum(array_column($myCart,'sub_total')):0}} <span>.00 BDT.</span></strong></div>
                 </div>
               </div>
             </div>
@@ -119,15 +125,19 @@
 @push('js')
 <script>
 
-  console.log('hello')
 
-  $plus       = document.getElementById('#plus')
-  $minus      = document.getElementById('#minus')
-  $quantity   = document.getElementById('#quantity')
+function updateTotal() {
+            var items = document.querySelectorAll('.item');
+            var total = 0;
 
-  
+            items.forEach(function(item) {
+                var quantity = parseInt(item.querySelector('.quantity').value);
+                var price = parseFloat(item.querySelector('.price').innerText.substring(1)); // Remove '$' and convert to float
+                total += quantity * price;
+            });
 
-
+            document.getElementById('total').innerText = '$' + total.toFixed(2);
+        }
 </script>
   
 @endpush

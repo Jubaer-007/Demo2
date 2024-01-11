@@ -24,6 +24,7 @@
       <div class="">
         @if (auth('customer')->user())
             <span> {{auth('customer')->user()->name}}</span>
+            
           <a href="{{route('customer.logout')}}">Logout</a>
 
           @else

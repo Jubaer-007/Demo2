@@ -74,6 +74,7 @@ class CustomerController extends Controller
     public function CustomerLoginOut()
     {
         Auth('customer')->logout();
+        session()->forget('cart');
         Toastr::error('successfully logout');
         return redirect()->route('web.home');
 

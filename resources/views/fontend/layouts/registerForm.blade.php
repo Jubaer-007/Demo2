@@ -34,7 +34,7 @@
                         <input style=" background-color:#bbdae2;" type="password" name="password" placeholder="password" class="form-control" value="{{old('password')}}">
                     </div>
 
-                    <a style="text-decoration:underline;" href="{{route('customer.loginForm')}}">Already have an account?</a><br><br>
+                    <span>Already have an account?</span><a style="text-decoration:underline;" href="{{route('customer.loginForm')}}">Login</a><br><br>
                     <button type="submit" class="btn btn-outline-light">Register</button>
                     </form>
                 </div>

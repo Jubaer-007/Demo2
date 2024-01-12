@@ -23,7 +23,7 @@ class ReportController extends Controller
        
         
         $orderReport = Order::whereBetween('created_at',[$form,$to])->where('payment_status','confirm')->get();
-        dd($orderReport);
+       
           
         
         return view('backend.layouts.report',compact('orderReport'));

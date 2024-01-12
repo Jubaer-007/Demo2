@@ -170,6 +170,7 @@ class WebHomeController extends Controller
         // redirect to payment page
         $this->payNow($order);
       }
+
       //assume that order placed succssfully. 
       session()->forget('cart');
 
@@ -181,6 +182,7 @@ class WebHomeController extends Controller
       return redirect()->back();
     }
   } 
+
 
   public function payNow($orderData)
   {
@@ -234,6 +236,5 @@ class WebHomeController extends Controller
       $payment_options = array();
     }
   }
-
 
 }

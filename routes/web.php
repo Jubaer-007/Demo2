@@ -11,7 +11,6 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\WebHomeController;
@@ -21,20 +20,6 @@ use App\Http\Controllers\MenuController;
 
 
 
-
-// SSLCOMMERZ Start
-Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
-Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
-
-Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
-Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
-
-Route::post('/success', [SslCommerzPaymentController::class, 'success']);
-Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
-Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
-
-Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
-//SSLCOMMERZ END
 
 Route::get('/',[WebHomeController::class,'index'])->name('web.home');
 Route::get('/menu',[WebHomeController::class,'menu'])->name('home.menu');

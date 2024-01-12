@@ -20,8 +20,8 @@
           <div class="card mb-3">
       <img height="200px" src="{{ url('uploads/menus/',$menu->image)}}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title"><span>Menu: </span>{{$menu->name}}</h5>
-        <p class="card-text"><span>Descriptions: </span>{{ $menu->description }}</p>
+        <h5 class=""><span>Menu: </span>{{$menu->name}}</h5>
+        <p class=""><span>Descriptions: </span>{{ $menu->description }}</p>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><span>Category: </span>{{$menu->category->name}}</li>
@@ -51,23 +51,25 @@
    
         <div class="row">
         
+         
         @foreach ($combos as $combo)
         <div class="col-md-3">
             <div class="card mb-3">
-              <img height="300" src="{{url('uploads/combos/',$combo->image)}}" class="card-img-top" alt="image">
+              <img height="200" src="{{url('uploads/combos/',$combo->image)}}" class="card-img-top" alt="image">
               <div class="card-body">
-                <h5 class="card-title"><span><b>Combo Name:</b></span>{{$combo->name}}</h5>
-                <h5 class="card-title"><span><b>Menus:</b></span>
+                <h5 class=""><span>Combo Name:</span>{{$combo->name}}</h5>
+                <span>Price: </span>{{$combo->price}}
+                <h5 class=""><span>Menus:</span>
                    @foreach ($menu_combos as $menu_combo )
                         {{$menu_combo->menu->name ?? "N/A"}} <span>,</span>
                     @endforeach
                 </h5>
-                <p class="card-text"><span>Description:</span>{{$combo->description}}</p>
+                <p class=""><span>Description:</span>{{$combo->description}}</p>
               </div>
+              
               <ul class="list-group list-group-flush">
                 <li class="list-group-item badge bg-success">{{$combo->status? "Available" : "NotAvailable"}}</li>
-                <p><span><b>Price:</b> </span>{{$combo->price}}BDT.</p>
-                <a class="btn btn-outline-danger p-2" href="">Add To Cart</a>
+                <a class="btn btn-outline-danger p-2" href="{{route('add.to.cart',$menu->id)}}">Add To Cart</a>
               </ul>
             </div>
             </div>
